@@ -28,7 +28,8 @@
     margin-bottom: 10px;
 }
 .simplePollRadioText {
-    margin-left: 5px;  
+    display: inline;
+    margin-left: 5px;
     position: relative;
     top: -2px;
 }

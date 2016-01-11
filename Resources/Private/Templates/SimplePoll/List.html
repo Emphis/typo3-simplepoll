@@ -19,9 +19,8 @@
                     <f:for each="{answers}" as="answer">
                         <div class='simplePollRow'>
                             <li>
-                                <f:form.radio value="{answer.uid}" name="simplePollRadio" class="simplePollRadioClass" />
-                                <!--<input type="radio" name="simplePollRadio" value="{answer.uid}" />-->
-                                <span class='simplePollRadioText'>{answer.title}</span>
+                                <f:form.radio value="{answer.uid}" id="simplePollRadio-{answer.uid}" name="simplePollRadio" class="simplePollRadioClass" />
+                                <label for="simplePollRadio-{answer.uid}" class="simplePollRadioText">{answer.title}</label>
                             </li>
                         </div>
                     </f:for>
