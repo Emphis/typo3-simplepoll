@@ -1,7 +1,28 @@
 <?php
+
 if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
+
+/**
+ * Register Icons
+ */
+$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
+$iconRegistry->registerIcon(
+    'simplepoll-poll',
+    \TYPO3\CMS\Core\Imaging\IconProvider\FontawesomeIconProvider::class,
+    ['name' => 'bar-chart']
+);
+$iconRegistry->registerIcon(
+    'simplepoll-answer',
+    \TYPO3\CMS\Core\Imaging\IconProvider\FontawesomeIconProvider::class,
+    ['name' => 'check-square-o']
+);
+$iconRegistry->registerIcon(
+    'simplepoll-iplock',
+    \TYPO3\CMS\Core\Imaging\IconProvider\FontawesomeIconProvider::class,
+    ['name' => 'lock']
+);
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
@@ -36,7 +57,9 @@ $GLOBALS['TCA']['tx_simplepoll_domain_model_simplepoll'] = array(
 		),
 		'searchFields' => 'question,image,end_time,show_result_link,show_result_after_vote,allow_multiple_vote,answers,ip_locks,',
 		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/SimplePoll.php',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/ext_icon.png'
+		'typeicon_classes' => array(
+            'default' => 'simplepoll-poll',
+        ),
 	),
 );
 
@@ -65,7 +88,9 @@ $GLOBALS['TCA']['tx_simplepoll_domain_model_answer'] = array(
 		),
 		'searchFields' => 'title,counter,',
 		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Answer.php',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/ext_icon.png'
+		'typeicon_classes' => array(
+            'default' => 'simplepoll-answer',
+        ),
 	),
 );
 
@@ -94,7 +119,9 @@ $GLOBALS['TCA']['tx_simplepoll_domain_model_iplock'] = array(
 		),
 		'searchFields' => 'address,timestamp,',
 		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/IpLock.php',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/ext_icon.png'
+		'typeicon_classes' => array(
+            'default' => 'simplepoll-iplock',
+        ),
 	),
 );
 
